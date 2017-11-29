@@ -1,0 +1,33 @@
+var program = require('commander');
+var chalk = require('chalk');
+var content = require('../lib/content');
+
+
+program
+    .usage('<hosts>')
+
+
+program.on('--help', function () {
+    console.log()
+    console.log('  Examples:')
+    console.log()
+    console.log(chalk.gray('    # 通过nssh 显示配置 '))
+    console.log('    $ nssh show ssh0 ssh1')
+    console.log()
+})
+
+/**
+ * Help.
+ */
+function help() {
+    program.parse(process.argv)
+    if (program.args.length < 1) {
+        content.listConfig()
+    }
+}
+
+help()
+
+var hosts = program.args
+
+content.showConfig(hosts)

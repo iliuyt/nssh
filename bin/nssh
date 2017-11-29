@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+let program = require('commander');
+
+program.version(require('../package').version)
+    .usage('<command> [options]')
+    .command('add <host> <ip>', '添加一个SSH配置')
+    .command('remove [hosts]', '根据Host删除配置')
+    .command('show [hosts]', '根据Host查看配置')
+    .command('create <host> <hostname> <user> <file> <auth>', '创建SSH并拷贝到服务器')
+    .parse(process.argv);

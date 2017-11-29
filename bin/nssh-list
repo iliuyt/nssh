@@ -1,0 +1,14 @@
+var program = require('commander');
+var content = require('../lib/content');
+
+program.on('--help', function () {
+    console.log()
+    console.log('  Examples:')
+    console.log()
+    console.log(chalk.gray('    # 通过nssh 查看所有配置 '))
+    console.log('    $ nssh list')
+    console.log()
+})
+
+
+content.listConfig();

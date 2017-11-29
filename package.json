@@ -1,0 +1,22 @@
+{
+  "author": "iliuyt",
+  "bin": {
+    "nssh": "./bin/nssh"
+  },
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "commander": "^2.12.2",
+    "inquirer": "^4.0.0",
+    "shelljs": "^0.7.8"
+  },
+  "description": "",
+  "devDependencies": {},
+  "directories": {},
+  "license": "ISC",
+  "main": "./lib/content.js",
+  "name": "nssh",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.4"
+}
