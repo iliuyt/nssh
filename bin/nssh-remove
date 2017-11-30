@@ -1,33 +1,35 @@
-var program = require('commander');
-var chalk = require('chalk');
-var inquirer = require('inquirer');
-var content = require('../lib/content');
+#!/usr/bin/env node
+
+let program = require('commander');
+let chalk = require('chalk');
+let inquirer = require('inquirer');
+let content = require('../lib/content');
 
 
 program
     .usage('<hosts>')
-    .option('-d --delete', '0:删除密钥 1:不删除密钥 默认为1 ')
+    .option('-d --delete', '0:删除密钥 1:不删除密钥 默认为1 ');
 
 program.on('--help', function () {
-    console.log()
-    console.log('  Examples:')
-    console.log()
-    console.log(chalk.gray('    # 通过nssh 删除配置 '))
-    console.log('    $ nssh remove ssh0 ssh1')
-    console.log()
-})
+    console.log();
+    console.log('  Examples:');
+    console.log();
+    console.log(chalk.gray('    # 通过nssh 删除配置 '));
+    console.log('    $ nssh remove ssh0 ssh1');
+    console.log();
+});
 
 /**
  * Help.
  */
 function help() {
-    program.parse(process.argv)
-    if (program.args.length < 1) return program.help()
+    program.parse(process.argv);
+    if (program.args.length < 1) return program.help();
 }
 
-help()
+help();
 
-var hosts = program.args
+let hosts = program.args;
 
 inquirer.prompt([{
     type: 'confirm',

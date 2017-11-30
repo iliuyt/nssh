@@ -1,42 +1,40 @@
-var program = require('commander');
-var chalk = require('chalk');
-var content = require('../lib/content');
+#!/usr/bin/env node
+
+let program = require('commander');
+let chalk = require('chalk');
+let content = require('../lib/content');
 
 
 program
     .usage('<host> <hostname> <user> <file> <auth>')
-    .option('-s --status', '0:不创建 1:创建 默认为1 ')
+    .option('-s --status', '0:不创建 1:创建 默认为1 ');
 
 
 program.on('--help', function () {
-    console.log()
-    console.log('  Examples:')
-    console.log()
-    console.log(chalk.gray('    # 通过nssh创建密钥并拷贝到服务器 '))
-    console.log('    $ nssh create ssh0 192.168.0.1 root id_rsa_ssh0')
-    console.log()
-})
+    console.log();
+    console.log('  Examples:');
+    console.log();
+    console.log(chalk.gray('    # 通过nssh创建密钥并拷贝到服务器 '));
+    console.log('    $ nssh create ssh0 192.168.0.1 root id_rsa_ssh0');
+    console.log();
+});
 
 /**
  * Help.
  */
 function help() {
-    program.parse(process.argv)
-    if (program.args.length < 1) return program.help()
+    program.parse(process.argv);
+    if (program.args.length < 2) return program.help();
 }
 
-help()
+help();
 
-var host = program.args[0]
-var hostname = program.args[1];
-var user = program.args[2] || false;
-var file = program.args[3] || false;
-var auth = program.args[4] || false;
+let host = program.args[0];
+let hostname = program.args[1];
+let user = program.args[2] || false;
+let file = program.args[3] || false;
+let auth = program.args[4] || false;
 
-if(!hostname){
-    console.log('hostname 必须填写')
-    return false;
-}
 
 content.createSSH({
     host,
@@ -44,4 +42,4 @@ content.createSSH({
     user,
     file,
     auth
-},!program.status);
+}, !program.status);
