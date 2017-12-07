@@ -10,7 +10,6 @@
     * 选择和设置默认密钥
     * 拷贝密钥到远程主机
     * 对SSH 密钥别名进行重命名
-    * 备份SSH密钥库
 
 ## 安装
 
@@ -184,3 +183,14 @@
 
         # 通过nssh拷贝密钥到远程主机
         $ nssh copy node1 root@192.168.0.2
+
+
+## 感谢
+
+NSSH的大部分思路来源与[SKM](https://github.com/TimothyYe/skm)，参考了大部分代码，只是通过Node实现了而已,在此特别声明，非常感谢。
+
+
+
+## Licence
+
+[MIT License](https://github.com/TimothyYe/skm/blob/master/LICENSE)
