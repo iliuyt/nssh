@@ -127,9 +127,15 @@
 
     Options:
 
+<<<<<<< HEAD
         -h, --help  output usage information
 
     Examples:
+=======
+#### 添加显示密钥功能
+#### 创建密钥考虑github的情况，是否可以直接上传github
+#### 如何删除密钥的情况下如何删除服务器密钥
+>>>>>>> 34480c6302bedbfd1e9797a496337a8f0d9e0171
 
         # 通过nssh拷贝密钥到远程主机
         $ nssh copy node1 root@192.168.0.2
