@@ -48,6 +48,57 @@
 
 ## 创建SSH KEY，通过别名登录
 
+    $ nssh create work1 -t 3 -h root@139.196.39.155
+    Generating public/private rsa key pair.
+    Enter passphrase (empty for no passphrase):
+    Enter same passphrase again:
+    Your identification has been saved in C:\Users\liuyt\.nssh\.tmp\id_rsa.
+    Your public key has been saved in C:\Users\liuyt\.nssh\.tmp\id_rsa.pub.
+    The key fingerprint is:
+    SHA256:IoWtg5M1+7VUANVB/JdU2EYVGjzMh5he/iSkwNfjRp4 liuyt@DESKTOP-48BGCR8
+    The key's randomart image is:
+    +---[RSA 2048]----+
+    |      .o++o.B..**|
+    |     o   +o+ %=.o|
+    |    + o   =.Oo=o |
+    |   + =   . o.Eo. |
+    |  + = . S   ..+  |
+    |   . + + .     . |
+    |      . .        |
+    |                 |
+    |                 |
+    +----[SHA256]-----+
+    密钥已生成
+    ssh-copy-id: INFO: Source of key(s) to be installed: "C:\Users\liuyt\.nssh\.tmp\id_rsa.pub"
+    ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+    ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+    root@139.196.39.155's password:
+
+    Number of key(s) added: 1
+
+    Now try logging into the machine, with:   "ssh 'root@139.196.39.155'"
+    and check to make sure that only the key(s) you wanted were added.
+
+    密钥拷贝完成，主机：root@139.196.39.155
+    配置添加完成，配置地址：C:\Users\liuyt\.ssh\config
+    ✔  密钥创建成功
+
+
+    $ ssh work1
+    Welcome to Ubuntu 16.04.2 LTS (GNU/Linux 4.4.0-63-generic x86_64)
+
+    * Documentation:  https://help.ubuntu.com
+    * Management:     https://landscape.canonical.com
+    * Support:        https://ubuntu.com/advantage
+
+    Welcome to Alibaba Cloud Elastic Compute Service !
+
+    Last login: Thu Dec  7 16:56:53 2017 from 180.168.111.190.xxx
+    root@iZ1193ih9wgZ:~#
+
+
+## 创建密钥
+
     $ nssh create
 
     Usage: nssh-create <name>
@@ -70,7 +121,7 @@
         $ nssh create github.com -t 1 -h liuyt@github.com
 
         # 通过nssh创建密钥并拷贝到192.168.0.2
-        $ nssh create node1 -t 2 -h root@192.168.0.2 -u root
+        $ nssh create node1 -t 2 -h root@192.168.0.2
 
         # 通过nssh创建密钥,生成配置并拷贝到192.168.0.2
         $ nssh create node1 -t 3 -h root@192.168.0.2
