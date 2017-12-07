@@ -6,15 +6,14 @@ let content = require('../lib/content');
 
 
 program
-    .usage('<hosts>');
-
+    .usage('<name> <new>')
 
 program.on('--help', function () {
     console.log();
     console.log('  Examples:');
     console.log();
-    console.log(chalk.gray('    # 通过nssh 显示配置 '));
-    console.log('    $ nssh show ssh0 ssh1');
+    console.log(chalk.gray('    # 修改default密钥名称为new '));
+    console.log(chalk.green('   $ nssh rn default new'));
     console.log();
 });
 
@@ -23,13 +22,12 @@ program.on('--help', function () {
  */
 function help() {
     program.parse(process.argv);
-    if (program.args.length < 1) {
-        content.listConfig();
-    }
+    if (program.args.length < 2) return program.help();
 }
 
 help();
 
-let hosts = program.args;
+let name = program.args[0];
+let newName = program.args[1];
 
-content.showConfig(hosts);
+content.rename(name, newName);

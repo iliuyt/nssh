@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+
+let program = require('commander');
+let chalk = require('chalk');
+let inquirer = require('inquirer');
+let content = require('../lib/content');
+let help = require('../lib/utils').help;
+
+
+program
+    .usage('<name> <host>')
+
+program.on('--help', function () {
+    console.log();
+    console.log('  Examples:');
+    console.log();
+    console.log(chalk.gray('    # 通过nssh拷贝密钥到远程主机'));
+    console.log(chalk.green('    $ nssh copy node1 root@192.168.0.2'));
+    console.log();
+});
+
+
+help(2);
+
+let name = program.args[0];
+let host = program.args[1];
+content.copy(name, host)

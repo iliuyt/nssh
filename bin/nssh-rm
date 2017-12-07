@@ -3,6 +3,7 @@
 let program = require('commander');
 let chalk = require('chalk');
 let content = require('../lib/content');
+let help = require('../lib/utils').help;
 
 
 program
@@ -16,14 +17,6 @@ program.on('--help', function () {
     console.log(chalk.green('    $ nssh rm default'));
     console.log();
 });
-
-/**
- * Help.
- */
-function help() {
-    program.parse(process.argv);
-    if (program.args.length < 1) return program.help();
-}
 
 help();
 

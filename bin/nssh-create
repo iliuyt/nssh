@@ -3,43 +3,42 @@
 let program = require('commander');
 let chalk = require('chalk');
 let content = require('../lib/content');
+let help = require('../lib/utils').help;
 
 
 program
-    .usage('<host> <hostname> <user> <file> <auth>')
-    .option('-s --status', '0:不创建 1:创建 默认为1 ');
-
+    .usage('<name>')
+    .option('-t --type <n>', '0:仅创建SSH key 1:创建SSH key并生成配置 2:创建SSH key 并拷贝到远程主机 3、创建SSH key，生成配置并拷贝到远程主机 ', parseInt)
+    .option('-h --host [value]', '主机地址')
 
 program.on('--help', function () {
     console.log();
     console.log('  Examples:');
     console.log();
-    console.log(chalk.gray('    # 通过nssh创建密钥并拷贝到服务器 '));
-    console.log('    $ nssh create ssh0 192.168.0.1 root id_rsa_ssh0');
+    console.log(chalk.gray('    # 通过nssh创建密钥'));
+    console.log(chalk.green('    $ nssh create node0'));
+    console.log();
+    console.log(chalk.gray('    # 通过nssh创建密钥并生成配置'));
+    console.log(chalk.green('    $ nssh create node1 -t 1 -h root@192.168.0.2'));
+    console.log();
+    console.log(chalk.gray('    # 通过nssh创建密钥并生成github配置'));
+    console.log(chalk.green('    $ nssh create github.com -t 1 -h liuyt@github.com'));
+    console.log();
+    console.log(chalk.gray('    # 通过nssh创建密钥并拷贝到192.168.0.2'));
+    console.log(chalk.green('    $ nssh create node1 -t 2 -h root@192.168.0.2 -u root'));
+    console.log();
+    console.log(chalk.gray('    # 通过nssh创建密钥,生成配置并拷贝到192.168.0.2'));
+    console.log(chalk.green('    $ nssh create node1 -t 3 -h root@192.168.0.2'));
     console.log();
 });
 
-/**
- * Help.
- */
-function help() {
-    program.parse(process.argv);
-    if (program.args.length < 2) return program.help();
-}
-
 help();
 
-let host = program.args[0];
-let hostname = program.args[1];
-let user = program.args[2] || false;
-let file = program.args[3] || false;
-let auth = program.args[4] || false;
-
-
-content.createSSH({
-    host,
-    hostname,
-    user,
-    file,
-    auth
-}, !program.status);
+let name = program.args[0];
+let type = program.type;
+let host = program.host;
+content.create({
+    name,
+    type,
+    host
+})

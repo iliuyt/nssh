@@ -1,0 +1,4 @@
+#!/usr/bin/env node
+
+let content = require('../lib/content');
+content.list();
