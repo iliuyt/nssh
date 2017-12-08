@@ -195,3 +195,7 @@
 NSSH的大部分思路来源与[SKM](https://github.com/TimothyYe/skm)，参考了大部分代码，只是通过Node实现了而已,在此特别声明，非常感谢。
 
 
+
+## Licence
+
+[MIT License](https://github.com/iliuyt/nssh/blob/master/LICENSE)
