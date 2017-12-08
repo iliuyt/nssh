@@ -3,6 +3,9 @@
     通过NSSH可以管理SSH密钥，一条命令，生成密钥，拷贝到服务器，添加配置，通过别名进行无密码登陆。
     测试了Windows和ubuntu，没有mac电脑，没有测试mac，如果有BUG大家给我留言，谢谢。
 
+    ![image](https://raw.githubusercontent.com/iliuyt/blog/master/lib/images/nssh.gif)
+
+
 ## 功能
 
     * 一键创建密钥，并拷贝的远程主机，通过别名直接登录

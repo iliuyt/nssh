@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-
-let program = require('commander');
 let content = require('../lib/content');
 
 content.init();

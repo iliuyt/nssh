@@ -1,7 +1,14 @@
 {
   "author": "iliuyt",
   "bin": {
-    "nssh": "./bin/nssh"
+    "nssh": "./bin/nssh",
+    "nssh-init": "./bin/nssh-init",
+    "nssh-ls": "./bin/nssh-ls",
+    "nssh-rn": "./bin/nssh-rn",
+    "nssh-rm": "./bin/nssh-rm",
+    "nssh-create": "./bin/nssh-create",
+    "nssh-copy": "./bin/nssh-copy",
+    "nssh-use": "./bin/nssh-use"
   },
   "dependencies": {
     "chalk": "^2.3.0",
@@ -18,5 +25,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "1.1.6"
+  "version": "1.1.8"
 }
