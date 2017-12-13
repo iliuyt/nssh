@@ -42,8 +42,8 @@ exports.init = function () {
             createDefaultLink(cts.SSHPublicKeyPath, cts.DefaultPublicKeyPath)
         }
 
-        console.log(chalk.green('✔ ssh key store initialized'));
-        console.log(chalk.green('ssh key store location is：' + cts.NSSHPath));
+        console.log(chalk.green('✔ ssh key store initialized!'));
+        console.log(chalk.green('ssh key store location is:' + cts.NSSHPath));
     } catch (error) {
         console.log(chalk.red('ssh key store initialize fail' + error.message));
     }
@@ -167,7 +167,7 @@ exports.create = function (name) {
             }
             // 拷贝密钥
             fs.renameSync(cts.TmpPath, newPath);
-            console.log(chalk.green('✔  ssh key ' + name + ' created'));
+            console.log(chalk.green('✔  ssh key [' + name + '] created'));
         })
         .catch(function (error) {
             var platform = os.platform();
@@ -235,7 +235,7 @@ exports.rename = function (name, newName) {
         fs.symlinkSync(path.join(cts.NSSHPath, newName, cts.PublicKey), cts.SSHPublicKeyPath)
     }
 
-    console.log(chalk.green('✔  ssh key ' + name + ' renamed to' + newName));
+    console.log(chalk.green('✔  ssh key [' + name + '] renamed to [' + newName + ']'));
 }
 
 exports.remove = function (name) {
@@ -257,7 +257,7 @@ exports.remove = function (name) {
     inquirer.prompt([{
         type: 'confirm',
         name: 'yes',
-        message: 'confirm to remove ' + name + '?'
+        message: 'confirm to remove [' + name + ']?'
     }]).then(function (resp) {
         if (resp.yes) {
             // check current symlink
@@ -276,7 +276,7 @@ exports.remove = function (name) {
                 delete confs[name];
                 utils.saveConf(confs, cts.ConfPath);
             }
-            console.log(chalk.green('✔  ssh key ' + name + ' removed'));
+            console.log(chalk.green('✔  ssh key [' + name + '] removed'));
         }
     });
 }
@@ -339,5 +339,5 @@ exports.use = function (name) {
 
     utils.createLink(cts.SSHPublicKeyPath, keys[name].PublicKey);
 
-    console.log(chalk.green('✔  Now using SSH key:' + name));
+    console.log(chalk.green('✔  Now using SSH key: [' + name + ']'));
 }
