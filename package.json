@@ -1,6 +1,6 @@
 {
   "name": "nssh",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "author": {
     "name": "iliuyt",
     "email": "liuytchrome@gmail.com",
@@ -36,6 +36,4 @@
   },
   "homepage": "https://github.com/iliuyt/nssh#readme",
   "devDependencies": {}
-
-
 }
