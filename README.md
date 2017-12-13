@@ -1,6 +1,9 @@
 ## NSSH
 
-    NSSH is a SSH Keys Manager for node.js command-line interfaces.It can generate a ssh key and set ssh key config and copy it to a remote host  with one commond,then you can use ssh login with name, no need for passwords. Inspired by TimothyYe/skm , which is written in go language.
+    NSSH is a SSH Keys Manager for node.js command-line interfaces.
+    It can generate a ssh key and set ssh key config and copy it to a remote host  with one commond,
+    then you can use ssh login with name, no need for passwords. 
+    Inspired by TimothyYe/skm , which is written in go language.
 
 ![image](https://raw.githubusercontent.com/iliuyt/blog/master/lib/images/nssh.gif)
 
