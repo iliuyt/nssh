@@ -1,29 +1,41 @@
 {
-  "author": "iliuyt",
+  "name": "nssh",
+  "version": "1.1.8",
+  "author": {
+    "name": "iliuyt",
+    "email": "liuytchrome@gmail.com",
+    "url": "https://github.com/iliuyt"
+  },
+  "description": "ssh key manager",
+  "preferGlobal": true,
   "bin": {
-    "nssh": "./bin/nssh",
-    "nssh-init": "./bin/nssh-init",
-    "nssh-ls": "./bin/nssh-ls",
-    "nssh-rn": "./bin/nssh-rn",
-    "nssh-rm": "./bin/nssh-rm",
-    "nssh-create": "./bin/nssh-create",
-    "nssh-copy": "./bin/nssh-copy",
-    "nssh-use": "./bin/nssh-use"
+    "nssh": "./bin/nssh"
+  },
+  "directories": {},
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "chalk": "^2.3.0",
     "commander": "^2.12.2",
-    "inquirer": "^4.0.0",
-    "shelljs": "^0.7.8"
+    "inquirer": "^4.0.0"
   },
-  "description": "",
-  "devDependencies": {},
-  "directories": {},
-  "license": "ISC",
-  "main": "./lib/content.js",
-  "name": "nssh",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "keywords": [
+    "skm",
+    "ssh",
+    "ssh-copy-id"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iliuyt/nssh.git"
   },
-  "version": "1.1.8"
+  "bugs": {
+    "url": "https://github.com/iliuyt/nssh/issues"
+  },
+  "homepage": "https://github.com/iliuyt/nssh#readme",
+  "devDependencies": {}
+
+
 }

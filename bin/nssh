@@ -1,22 +1,135 @@
-#!/usr/bin/env node
+// #!/usr/bin/env node
 
 let program = require('commander');
+let pkg = require('../package.json');
+let nssh = require('../index');
+let chalk = require('chalk');
 
-program.version(require('../package').version)
+
+program.version(pkg.version)
+    .option('-v, --version', 'get version')
+    .option('-t, --type <n>', `0:Only create a new ssh key 
+                   1:Create a new ssh key and set ssh key config 
+                   2:Create a new ssh key and copy new ssh key to remote host 
+                   3:Create a new ssh key and copy new ssh key to remote host and set ssh key config
+                   `, parseInt)
+    .option('-H --host [value]', 'Remote host address and username')
     .usage('<command> [options]')
-    .command('init', '初始化SSH key库')
-    .command('ls', '查看SSH key列表')
-    .command('use <name>', '切换SSH key')
-    .command('rm <name>', '删除SSH key')
-    .command('rn <name> <new>', '修改SSH key名称')
-    .command('create <name>', '创建SSH key')
-    .command('copy <name> <host>', '创建SSH key')
-    .action(function (cmd, options) {
-        // 如果非定义命令，弹出help
-        if (!program._execs[cmd]) {
-            program.help();
-        }
-    })
-    .parse(process.argv);
+
+// Set help info
+program.on('--help', function () {
+    console.log('');
+    console.log('  Basic Examples:');
+    console.log();
+    console.log(chalk.gray('    # Initialize SSH keys store'));
+    console.log(chalk.green('    $ nssh init'));
+    console.log();
+    console.log(chalk.gray('    # List all the store SSH keys'));
+    console.log(chalk.green('    $ nssh ls'));
+    console.log();
+    console.log(chalk.gray('    # Create a new ssh key'));
+    console.log(chalk.green('    $ nssh create node0'));
+    console.log();
+    console.log(chalk.gray('    # Create a new ssh key and set its config'));
+    console.log(chalk.green('    $ nssh create node1 -t 1 -H root@192.168.0.2'));
+    console.log();
+    console.log(chalk.gray('    # Create a new ssh key for github and set its config'));
+    console.log(chalk.green('    $ nssh create github.com -t 1 -H liuyt@github.com'));
+    console.log();
+    console.log(chalk.gray('    # Create a new ssh key and copy public key to a remote host'));
+    console.log(chalk.green('    $ nssh create node1 -t 2 -H root@192.168.0.2 -u root'));
+    console.log();
+    console.log(chalk.gray('    # Create a new ssh key and set its config and copy public key to a remote host'));
+    console.log(chalk.green('    $ nssh create node1 -t 3 -H root@192.168.0.2'));
+    console.log();
+    console.log(chalk.gray('    # Copy ssh public key to a remote host'));
+    console.log(chalk.green('    $ nssh copy node1 root@192.168.0.2'));
+    console.log();
+    console.log(chalk.gray('    # Remove ssh key '));
+    console.log(chalk.green('    $ nssh rm default'));
+    console.log();
+    console.log(chalk.gray('    # Rename ssh key '));
+    console.log(chalk.green('    $ nssh rn default new'));
+    console.log();
+    console.log(chalk.gray('    # Switch to use the specified SSH key '));
+    console.log(chalk.green('    $ nssh use default'));
+    console.log();
+});
 
 
+// Display help if 0 arguments passed to nssh
+if (process.argv.length == 2 || process.argv[2].indexOf('-') >= 0) {
+    program.parse(process.argv);
+    program.help();
+    // Check if it does not forget to close fds from RPC
+    process.exit(1);
+}
+
+//
+// Initialize SSH keys store
+//
+program
+    .command('init')
+    .alias('i')
+    .description('Initialize SSH keys store for the first time usage.')
+    .action(nssh.init)
+
+//
+// List all the store SSH keys
+//
+program
+    .command('ls')
+    .alias('l')
+    .description('List all the store SSH keys')
+    .action(nssh.list)
+
+//
+// Use ssh key
+//
+program
+    .command('use <name>')
+    .alias('u')
+    .description('Switch to use the specified SSH key')
+    .action(nssh.use)
+
+//
+// Remove ssh key
+//
+program
+    .command('remove <name>')
+    .alias('rm')
+    .description('Remove SSH key from store SSH keys list')
+    .action(nssh.remove)
+
+//
+// Rename ssh key
+//
+program
+    .command('rename <name> <newName>')
+    .alias('rn')
+    .description('Rename the SSH key ')
+    .action(nssh.rename)
+
+//
+// Create new ssh key
+//
+program
+    .command('create <name>')
+    .alias('c')
+    .description('Create a new SSH key ')
+    .action(nssh.create)
+//
+// Copy ssh key
+//
+program
+    .command('copy <name> <host>')
+    .alias('cp')
+    .description('Copy SSH public key to a remote host  ')
+    .action(nssh.copy)
+
+// Display help if wrong cmd
+program.action(function (cmd, options) {
+    program.help();
+})
+
+program.parse(process.argv)
