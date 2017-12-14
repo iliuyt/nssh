@@ -19,7 +19,7 @@ exports.init = function () {
         // create default symlink
         function createDefaultLink(linkPath, filePath) {
             let stat = utils.existsFile(linkPath);
-            if (stat && (stat.isSymbolicLink() || stat.isFile())) {
+            if (stat) {
                 let copyPath = linkPath;
 
                 if (stat.isSymbolicLink()) {

@@ -15,7 +15,7 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "dependencies": {
     "chalk": "^2.3.0",
@@ -35,5 +35,8 @@
     "url": "https://github.com/iliuyt/nssh/issues"
   },
   "homepage": "https://github.com/iliuyt/nssh#readme",
-  "devDependencies": {}
+  "devDependencies": {
+    "mocha": "^4.0.1",
+    "shelljs": "^0.7.8"
+  }
 }
