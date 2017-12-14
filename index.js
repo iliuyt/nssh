@@ -94,6 +94,7 @@ exports.create = function (name) {
     }
     let host = program.host;
     let type = program.type;
+    let password = program.password;
 
     // check name is exists
     let newPath = path.join(cts.NSSHPath, name);
@@ -139,7 +140,7 @@ exports.create = function (name) {
     utils.mkdirSync(cts.TmpPath);
 
     let newKeyFilePath = path.join(newPath, cts.PrivateKey);
-    shell.keygen(cts.TmpPrivateKeyPath)
+    shell.keygen(cts.TmpPrivateKeyPath, password)
         .then(function () {
             console.log(chalk.green('create ssh key success'));
             // copy ssh key

@@ -14,6 +14,7 @@ program.version(pkg.version)
                    3:Create a new ssh key and copy new ssh key to remote host and set ssh key config
                    `, parseInt)
     .option('-H --host [value]', 'Remote host address and username')
+    .option('-P --password [value]', "Generate ssh key's new_passphrase,default empty")
     .usage('<command> [options]')
 
 // Set help info
