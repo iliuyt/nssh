@@ -15,7 +15,9 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "coverage": "nyc --reporter=lcov --reporter=text --reporter=text-summary npm run test",
+    "report-coverage": "nyc report --reporter=lcov > coverage.lcov && codecov"
   },
   "dependencies": {
     "chalk": "^2.3.0",
@@ -36,7 +38,9 @@
   },
   "homepage": "https://github.com/iliuyt/nssh#readme",
   "devDependencies": {
+    "codecov": "^3.0.0",
     "mocha": "^4.0.1",
+    "nyc": "^11.3.0",
     "shelljs": "^0.7.8"
   }
 }

@@ -2,7 +2,7 @@
 
 let program = require('commander');
 let pkg = require('../package.json');
-let nssh = require('../index');
+let nssh = require('../index')();
 let chalk = require('chalk');
 
 
