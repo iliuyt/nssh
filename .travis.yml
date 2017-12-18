@@ -14,26 +14,10 @@ cache:
 branches:
   only:
     - dev
-
-before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install tcl tk expect; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update          ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then apt-get install tcl tk expect; fi
-
+    
 script:
   - npm run coverage
-
-before_cache:
-  - echo 'before_cache'
-
-
-after_success:
-  - echo 'after_success'
-
-after_failure:
-  - echo 'after_failure'
-
+  
 after_success:
   - npm run report-coverage
 
