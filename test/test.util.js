@@ -1,3 +1,5 @@
+var pty = require('pty.js');
+
 function hookConsole(logger, target) {
     return function (...args) {
         logger.apply(null, args)
@@ -14,7 +16,27 @@ function indexofArray(arr, char) {
     return false;
 }
 
+function spawn(cmd, options, handle, callback) {
+    let term = pty.spawn(cmd, options);
+    let content = [];
+    term.on('data', function (data) {
+        content.push(data);
+        console.log(data);
+        if (handle && typeof handle === 'function') {
+            handle(term, data, content)
+        }
+    });
+
+
+    term.on('close', function () {
+        if (callback && typeof callback === 'function') {
+            callback(content.reverse())
+        }
+    });
+}
+
 module.exports = {
     hookConsole,
-    indexofArray
+    indexofArray,
+    spawn
 }

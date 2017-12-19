@@ -1,6 +1,7 @@
 
 ![](https://raw.githubusercontent.com/iliuyt/blog/master/lib/images/nssh-logo.png)  
 [![Build Status](https://travis-ci.org/iliuyt/nssh.svg?branch=dev)](https://travis-ci.org/iliuyt/nssh)
+[![codecov](https://codecov.io/gh/iliuyt/nssh/branch/dev/graph/badge.svg)](https://codecov.io/gh/iliuyt/nssh)
 [![MIT licensed](https://img.shields.io/dub/l/vibe-d.svg)](LICENSE) 
 [![NPM Downloads](https://img.shields.io/npm/dm/nssh.svg?style=flat-square)](https://www.npmjs.com/package/nssh) 
 [![GitHub last commit](https://img.shields.io/github/last-commit/iliuyt/nssh.svg?style=plastic)]()

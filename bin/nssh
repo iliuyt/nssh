@@ -5,7 +5,6 @@ let pkg = require('../package.json');
 let nssh = require('../index')();
 let chalk = require('chalk');
 
-
 program.version(pkg.version)
     .option('-v, --version', 'get version')
     .option('-t, --type <n>', `0:Only create a new ssh key 
@@ -13,8 +12,11 @@ program.version(pkg.version)
                    2:Create a new ssh key and copy new ssh key to remote host 
                    3:Create a new ssh key and copy new ssh key to remote host and set ssh key config
                    `, parseInt)
-    .option('-H --host [value]', 'Remote host address and username')
-    .option('-P --password [value]', "Generate ssh key's new_passphrase,default empty")
+    .option('-H --host [value]', 'Remote host address, you can include the usename and port, E.g: root@192.168.0.168:22')
+    .option('-u --user [value]', 'Remote host of username, default root')
+    .option('-p --port [value]', "Remote host of port, default 22", parseInt)
+    .option('-N --new_passphrase [value]', "Generate ssh key's new_passphrase,default empty")
+
     .usage('<command> [options]')
 
 // Set help info
@@ -38,7 +40,7 @@ program.on('--help', function () {
     console.log(chalk.green('    $ nssh create github.com -t 1 -H liuyt@github.com'));
     console.log();
     console.log(chalk.gray('    # Create a new ssh key and copy public key to a remote host'));
-    console.log(chalk.green('    $ nssh create node1 -t 2 -H root@192.168.0.2 -u root'));
+    console.log(chalk.green('    $ nssh create node1 -t 2 -H root@192.168.0.2'));
     console.log();
     console.log(chalk.gray('    # Create a new ssh key and set its config and copy public key to a remote host'));
     console.log(chalk.green('    $ nssh create node1 -t 3 -H root@192.168.0.2'));
