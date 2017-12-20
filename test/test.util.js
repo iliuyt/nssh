@@ -26,7 +26,12 @@ function spawn(cmd, options, handle, callback) {
             handle(term, data, content)
         }
     });
+    term.on('close', function () {
+        console.log('------------------close--------------------')
+    });
+
     term.on('exit', function () {
+        console.log('------------------exit--------------------')
         if (callback && typeof callback === 'function') {
             callback(content.reverse())
         }
