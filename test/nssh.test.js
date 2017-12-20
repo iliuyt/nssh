@@ -19,6 +19,8 @@ let initStore = function () {
     console.log = logger;
 }
 
+let outTime = 5000;
+
 describe('NSSH testing:', function () {
 
     let handle = function (term, data) {
@@ -53,7 +55,7 @@ describe('NSSH testing:', function () {
     })
 
     describe('#Init Command', function () {
-        this.timeout(5000)
+        this.timeout(outTime)
 
         let successStr = '✔ ssh key store initialized!';
         it('nssh initialized success', function (done) {
@@ -84,7 +86,7 @@ describe('NSSH testing:', function () {
     })
 
     describe('#Create command', function () {
-        this.timeout(5000)
+        this.timeout(outTime)
         initStore();
         let user = 'root';
         let port = '22';
@@ -197,7 +199,7 @@ describe('NSSH testing:', function () {
     })
 
     describe('#Remove Command', function () {
-        this.timeout(5000)
+        this.timeout(outTime)
         initStore();
 
         it('remove not exists ssh key', function (done) {
@@ -228,7 +230,7 @@ describe('NSSH testing:', function () {
     })
 
     describe('#Rename Command', function () {
-        this.timeout(5000)
+        this.timeout(outTime)
         initStore();
         it('rename not exists ssh key', function (done) {
             let sshName = 'test' + Date.now();
@@ -276,7 +278,7 @@ describe('NSSH testing:', function () {
 
 
     describe('#Copy Command', function () {
-        this.timeout(5000)
+        this.timeout(outTime)
         initStore();
 
         let user = 'root';
