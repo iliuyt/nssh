@@ -31,6 +31,9 @@ describe('NSSH testing:', function () {
         if (data.indexOf('s password:') >= 0) {
             term.write('root\r');
         }
+        if (data.indexOf('yes/no') >= 0) {
+            term.write('yes\r');
+        }
     }
 
     before(function () {
