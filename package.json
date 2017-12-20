@@ -18,7 +18,7 @@
     "testu": "mocha ./test/utils.test.js",
     "testn": "mocha ./test/nssh.test.js",
     "test": "mocha",
-    "coverage": "nyc --reporter=lcov --reporter=text --reporter=text-summary npm run test",
+    "coverage": "nyc --reporter=lcov --reporter=text --reporter=text-summary npm run testn",
     "report-coverage": "nyc report --reporter=lcov > coverage.lcov && codecov"
   },
   "dependencies": {
