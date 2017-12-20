@@ -1,7 +1,15 @@
+
+![](https://raw.githubusercontent.com/iliuyt/blog/master/lib/images/nssh-logo.png)  
+[![Build Status](https://travis-ci.org/iliuyt/nssh.svg?branch=dev)](https://travis-ci.org/iliuyt/nssh)
+[![codecov](https://codecov.io/gh/iliuyt/nssh/branch/dev/graph/badge.svg)](https://codecov.io/gh/iliuyt/nssh)
+[![MIT licensed](https://img.shields.io/dub/l/vibe-d.svg)](LICENSE) 
+[![NPM Downloads](https://img.shields.io/npm/dm/nssh.svg?style=flat-square)](https://www.npmjs.com/package/nssh) 
+[![GitHub last commit](https://img.shields.io/github/last-commit/iliuyt/nssh.svg?style=plastic)]()
+
 ## NSSH
 
     NSSH is a SSH Keys Manager for node.js command-line interfaces.
-    It can generate a ssh key and set ssh key config and copy it to a remote host  with one commond,
+    It can generate a ssh key and set ssh key config and copy the public key to a remote host with one commond.
     then you can use ssh login with name, no need for passwords. 
     Inspired by TimothyYe/skm , which is written in go language.
 
@@ -10,7 +18,7 @@
 
 ## Features
 
-    * generate a ssh key and set ssh key config and copy it to a remote host with one commond
+    * generate a ssh key and set ssh key config and copy the public key to a remote host with one commond
     * Manage all your SSH keys by alias names
     * Choose and set a default SSH key
     * Copy default SSH key to a remote host
@@ -30,13 +38,17 @@
 
         -V, --version      output the version number
         -v, --version      get version
-        -t, --type <n>     0:Only create a new ssh key
-                        1:Create a new ssh key and set ssh key config
-                        2:Create a new ssh key and copy new ssh key to remote host
-                        3:Create a new ssh key and copy new ssh key to remote host and set ssh key config
+        -t, --type <n>      0:Only create a new ssh key
+                            1:Create a new ssh key and set ssh key config
+                            2:Create a new ssh key and copy new ssh key to remote host
+                            3:Create a new ssh key and copy new ssh key to remote host and set ssh key config
 
-        -H --host [value]  Remote host address and username
+        -H --host [value]  Remote host address, you can include the usename and port, E.g: root@192.168.0.168:22
+        -u --user [value]  Remote host of username, default root
+        -p --port [value]  Remote host of port, default 22
+        -N --new_passphrase [value]  Generate ssh key's new_passphrase
         -h, --help         output usage information
+
 
     Basic Examples:
 
@@ -56,7 +68,7 @@
         $ nssh create github.com -t 1 -H liuyt@github.com
 
         # Create a new ssh key and copy public key to a remote host
-        $ nssh create node1 -t 2 -H root@192.168.0.2 -u root
+        $ nssh create node1 -t 2 -H root@192.168.0.2
 
         # Create a new ssh key and set its config and copy public key to a remote host
         $ nssh create node1 -t 3 -H root@192.168.0.2

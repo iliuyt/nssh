@@ -1,6 +1,6 @@
 {
   "name": "nssh",
-  "version": "1.2.5",
+  "version": "1.3.0",
   "author": {
     "name": "iliuyt",
     "email": "liuytchrome@gmail.com",
@@ -15,7 +15,11 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "testu": "mocha ./test/utils.test.js",
+    "testn": "mocha ./test/nssh.test.js",
+    "test": "mocha",
+    "coverage": "nyc --reporter=lcov --reporter=text --reporter=text-summary npm run testn",
+    "report-coverage": "nyc report --reporter=lcov > coverage.lcov && codecov"
   },
   "dependencies": {
     "chalk": "^2.3.0",
@@ -35,5 +39,11 @@
     "url": "https://github.com/iliuyt/nssh/issues"
   },
   "homepage": "https://github.com/iliuyt/nssh#readme",
-  "devDependencies": {}
+  "devDependencies": {
+    "codecov": "^3.0.0",
+    "mocha": "^4.0.1",
+    "nyc": "^11.3.0",
+    "pty.js": "^0.3.1",
+    "shelljs": "^0.7.8"
+  }
 }

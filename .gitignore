@@ -23,6 +23,7 @@
 .DS_Store
 Thumbs.db
 
-/test
-test.*
-
+npm-debug.log
+coverage/
+coverage.lcov
+.nyc_output

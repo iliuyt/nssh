@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - "6"
+sudo: enabled
+cache:
+ directories:
+    - node_modules
+branches:
+  only:
+    - dev
+
+before_script:
+  - sudo chmod 777 /home/travis/build/iliuyt/nssh/bin/nssh
+script:
+  - npm run coverage
+  
+after_success:
+  - npm run report-coverage
+
