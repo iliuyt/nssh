@@ -236,6 +236,11 @@ describe('Utils testing:', function () {
             assert.equal(obj.port, '50001');
         })
 
+        it('string is empty', function () {
+            let obj = utils.getHost()
+            assert.equal(obj, false);
+        })
+
         it('cover host', function () {
             let cover = {
                 user: 'root',

@@ -21,7 +21,7 @@ function spawn(cmd, options, handle, callback) {
     let content = [];
     term.on('data', function (data) {
         content.push(data);
-        // console.log(data);
+        console.log(data);
         if (handle && typeof handle === 'function') {
             handle(term, data, content)
         }

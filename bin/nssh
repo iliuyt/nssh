@@ -15,7 +15,7 @@ program.version(pkg.version)
     .option('-H --host [value]', 'Remote host address, you can include the usename and port, E.g: root@192.168.0.168:22')
     .option('-u --user [value]', 'Remote host of username, default root')
     .option('-p --port [value]', "Remote host of port, default 22", parseInt)
-    .option('-N --new_passphrase [value]', "Generate ssh key's new_passphrase,default empty")
+    .option('-N --new_passphrase [value]', "Generate ssh key's new_passphrase")
 
     .usage('<command> [options]')
 
