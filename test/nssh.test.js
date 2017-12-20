@@ -19,7 +19,7 @@ let initStore = function () {
     console.log = logger;
 }
 
-let outTime = 10000;
+let outTime = 15000;
 
 describe('NSSH testing:', function () {
 
