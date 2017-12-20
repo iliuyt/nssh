@@ -3,7 +3,7 @@ os:
   - linux
 node_js:
   - "6"
-sudo: false
+sudo: true
 cache:
  directories:
     - node_modules
