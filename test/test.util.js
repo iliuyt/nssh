@@ -21,14 +21,12 @@ function spawn(cmd, options, handle, callback) {
     let content = [];
     term.on('data', function (data) {
         content.push(data);
-        console.log(data);
+        // console.log(data);
         if (handle && typeof handle === 'function') {
             handle(term, data, content)
         }
     });
-
-
-    term.on('close', function () {
+    term.on('exit', function () {
         if (callback && typeof callback === 'function') {
             callback(content.reverse())
         }

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-
+let nssh = require('../index')();
 let program = require('commander');
 let pkg = require('../package.json');
-let nssh = require('../index')();
 let chalk = require('chalk');
+
 
 program.version(pkg.version)
     .option('-v, --version', 'get version')

@@ -217,4 +217,36 @@ describe('Utils testing:', function () {
         })
     });
 
+
+    describe('getHost()', function () {
+
+        it('default host', function () {
+            let obj = utils.getHost('192.168.0.2');
+            assert.equal(typeof obj, 'object');
+            assert.equal(obj.user, 'root');
+            assert.equal(obj.address, '192.168.0.2');
+            assert.equal(obj.port, '22');
+        })
+
+        it('string to host object', function () {
+            let obj = utils.getHost('root@192.168.0.2:50001')
+            assert.equal(typeof obj, 'object');
+            assert.equal(obj.user, 'root');
+            assert.equal(obj.address, '192.168.0.2');
+            assert.equal(obj.port, '50001');
+        })
+
+        it('cover host', function () {
+            let cover = {
+                user: 'root',
+                port: 22
+            }
+            let obj = utils.getHost('test@192.168.0.2:50001', cover);
+            assert.equal(typeof obj, 'object');
+            assert.equal(obj.user, 'root');
+            assert.equal(obj.address, '192.168.0.2');
+            assert.equal(obj.port, '22');
+        })
+    });
+
 });

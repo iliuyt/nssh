@@ -15,6 +15,8 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
+    "testu": "mocha ./test/utils.test.js",
+    "testn": "mocha ./test/nssh.test.js",
     "test": "mocha",
     "coverage": "nyc --reporter=lcov --reporter=text --reporter=text-summary npm run test",
     "report-coverage": "nyc report --reporter=lcov > coverage.lcov && codecov"

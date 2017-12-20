@@ -133,6 +133,8 @@ let nssh = function (constConf) {
       // create temp floder
       utils.mkdirSync(cts.TmpPath);
 
+      console.log(host)
+
       let newKeyFilePath = path.join(newPath, cts.PrivateKey);
       shell.keygen(cts.TmpPrivateKeyPath, passphrase)
         .then(function (code) {
