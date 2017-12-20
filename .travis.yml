@@ -1,6 +1,4 @@
 language: node_js
-os:
-  - linux
 node_js:
   - "6"
 sudo: enabled
@@ -10,7 +8,9 @@ cache:
 branches:
   only:
     - dev
-    
+
+before_script:
+  - sudo chmod 777 /home/travis/build/iliuyt/nssh/bin/nssh
 script:
   - npm run coverage
   
