@@ -30,6 +30,10 @@ function spawn(cmd, options, handle, callback) {
         console.log('------------------close--------------------')
     });
 
+    term.on('error', function (err) {
+        console.log('------------------error--------------------', err)
+    });
+
     term.on('exit', function () {
         console.log('------------------exit--------------------')
         if (callback && typeof callback === 'function') {
