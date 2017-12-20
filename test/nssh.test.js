@@ -29,7 +29,7 @@ describe('NSSH testing:', function () {
             term.write('\r');
         }
         if (data.indexOf('s password:') >= 0) {
-            term.write('root\r');
+            term.write('123456\r');
         }
         if (data.indexOf('yes/no') >= 0) {
             term.write('yes\r');
@@ -85,7 +85,7 @@ describe('NSSH testing:', function () {
         initStore();
 
         let user = 'root';
-        let port = '50001';
+        let port = '22';
         let address = '139.196.39.133';
         let host = user + '@' + address + ':' + port;
         let coverHost = 'test@' + address + ':22';
