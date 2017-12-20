@@ -89,7 +89,7 @@ describe('NSSH testing:', function () {
         this.timeout(outTime)
         initStore();
         let user = 'root';
-        let port = '22';
+        let port = '50001';
         let address = '139.196.39.133';
         let host = user + '@' + address + ':' + port;
         let coverHost = 'test@' + address + ':22';
